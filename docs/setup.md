@@ -77,6 +77,7 @@ We are now going to create a new experiment to activate the GM parameterisation 
     &namtra_eiv    !   eddy induced velocity param.                     
     !-----------------------------------------------------------------------
        ln_ldfeiv   = .true.        ! use eddy induced velocity parameterization
+    /
     ```
     This activates the default specification of the GM coefficient ($$\kappa_{gm}$$) which is constent all over the ocean domain with a value of $$2 000$$ $$m^2 s^{-1}$$.
 
@@ -124,7 +125,7 @@ Now we will run three experiments to compare: EXPCTRL, EXPEIV and EXPGEOM.
 1. Create a new experiment:
     ```bash
     cd ..
-    cp -R EXPRED EXPCTRL & cd EXPCTRL
+    cp -R EXPREF EXPCTRL & cd EXPCTRL
     ln -s ../BLD/bin/nemo.exe nemo
     rm file_def_nemo.xml
     ln -s ../EXPSPIN/file_def_nemo.xml
@@ -163,6 +164,7 @@ Here we provide a guide to change it but you can find all the available values i
         &namtra_eiv    !   eddy induced velocity param.                     
         !-----------------------------------------------------------------------
            ln_ldfeiv   = .true.        ! use eddy induced velocity parameterization
+        /
         ```
     * EXPEIV
         ```vi
@@ -173,6 +175,7 @@ Here we provide a guide to change it but you can find all the available values i
               !
               !                        !  Coefficients:
               nn_aei_ijk_t    = 21          !  space/time variation of eddy coefficient:
+        /
         ```
     * EXPGEOM
         ```vi
@@ -183,6 +186,7 @@ Here we provide a guide to change it but you can find all the available values i
               !
               !                        !  Coefficients:
               nn_aei_ijk_t    = 32          !  space/time variation of eddy coefficient:
+        /
         ```
     > **Note:** In EXPGEOM, we used the default settings for the GEOMETRIC parameterisation. However, NEMO5 provides a number of parameters that can be use to custom the eddy energy budget. This can be done by copying the _&namldf_eke_ section of **namelist_ref** in your **namelist_cfg** file and modifying the default values.
     
