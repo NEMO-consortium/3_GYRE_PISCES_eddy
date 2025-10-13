@@ -130,7 +130,7 @@ Now we will run three experiments to compare: EXPCTRL, EXPEIV and EXPGEOM.
     rm file_def_nemo.xml
     ln -s ../EXPSPIN/file_def_nemo.xml
     ```
-2. Open the **namelis_cfg** file and edit the _&namrun_ section to restart from the last EXPSPIN state:
+2. Open the **namelist_cfg** file and edit the _&namrun_ section to restart from the last EXPSPIN state:
     ```vi
        nn_it000  = 21601   !
        nn_itend  = 32400   !
