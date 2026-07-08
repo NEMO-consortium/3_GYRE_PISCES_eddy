@@ -4,10 +4,10 @@ This page is a guide to compile and run an idealised gyre configuration.
 Once installed, NEMO5 provides a suite of reference configurations in the _cfgs_ folder.
 Two gyre configurations are already installed: GYRE_BFM and GYRE_PISCES. 
 In this tutorial, we use GYRE_PISCES which couples the dynamical ocean model of NEMO to PISCES. 
-This allows to compute the evolution of bio-eo-chemical matters whitin our ocean domain.
+This allows one to compute the evolution of bio-geo-chemical properties whitin our ocean domain.
 
 In order to compare different mesoscale coefficients, we need to carefully set-up an experimental protocol.
-The idea is to turn-oon the GM tracer advection scheme using a constant $\kappa_{gm}$. 
+The idea is to turn on the GM tracer advection scheme using a constant $\kappa_{gm}$. 
 We will call this experiment _EXPCTRL_ since it serves as control run in order to compare circulation changes with the other runs.
 The simulation is first spun-up by running the model with the exact same parameters (_EXPSPIN_). 
 The final state of the spin-up will serve at the initial state of the other experiments. 
@@ -24,28 +24,30 @@ The protocol can be summarised in the diagram bellow. The number of years simula
 ```
 <br>
 
-It is now time to set-up your first gyre model. 
-But before going further, create a new git branch in order to not incorporate unwanted changes in the main branch:
-```bash
-git checkout -b tuto-gyre
-git status
-```
-These commands will create and point to a new branch named 'tuto-gyre', and then display the working tree status associated to the current branch.
+It is now time to set-up your first gyre model. First install NEMO v5.0.2 and XIOS following the [NEMO Basics](https://github.com/NEMO-consortium/0_NEMO_basics) tutorial. 
 
 ## Set-up the spin-up experiment (EXPSPIN)
 
-In the top-level NEMO folder, use the *makenemo* script to compile the configuration:
+If you have followed the [NEMO Basics](https://github.com/NEMO-consortium/0_NEMO_basics) tutorial, you will already have the GYRE PISCES configuration compiled. If not, follow the steps below in your NEMO v5.0.2 folder, use the *makenemo* script to compile the configuration:
+
 ```bash
-./makenemo -m 'auto' -n 'GYRE_PISCES' -j 2
+./makenemo -m MY_COMPUTER -r GYRE_PISCES -n GYRE_DEMO -j 8
 ```
-This command compiles NEMO and stores buildt files in the *cfgs/GYRE_PISCES/BLD* folder. 
-In particular, it creates an executable **cfgs/GYRE_PISCES/BLD/bin/nemo.exe** that will be used to run the model.
 
-> **Note**: In this tutorial, we have used an auto arch file generated in order to fit with the NEMO and dependencies installation. You can change it to your needs; numberous of arch diles are available in the _arch_ folder. 
+> **Note**: If you have decided to use an auto arch file, you will replace MY_COMPUTER with auto
 
-Test your installation by running the model:
+This command compiles NEMO and stores the build files in the *cfgs/GYRE_DEMO/BLD* folder. 
+
+In particular, it creates an executable **cfgs/GYRE_DEMO/BLD/bin/nemo.exe** that will be used to run the model.
+
+If you have not done so already, copy EXP00 to create EXP01
+```
+cp cfgs/GYRE_DEMO/EXP00 cfgs/GYRE_DEMO/EXP01
+```
+
+Test your installation by running the model (or by submitting a job as is suggested in the [NEMO Basics](https://github.com/NEMO-consortium/0_NEMO_basics) tutorial):
 ```bash
-cd cfgs/GYRE_PISCES/EXP00
+cd cfgs/GYRE_DEMO/EXP01
 ./nemo &
 ```
 You can follow how the simulation goes by printing the current iteration with `cat time.step`. 
@@ -55,13 +57,13 @@ Results are stored in _GYRE\_\*\_grid\_\*.nc_ files.
 We are now going to create a new experiment to activate the GM parameterisation and spin-up the model for 10 years:
 1. Navigate and return to the configuration top-level folder: `cd .. & ls`. At this point, the folder structure should be as follow:
     ```bash
-    BLD cpp_GYRE_PISCES_.fcm  EXP00  EXPREF  MY_SRC  WORK
+    BLD cpp_GYRE_DEMO.fcm  EXP00 EXP01  MY_SRC  WORK
     ```
-2. Copy-paste the _EXPREF_ folder which contains links and configuration files with default settings to run the configuration.
+2. Copy-paste the _EXP00_ folder which contains links and configuration files with default settings to run the configuration.
     ```bash
-    cp -R 'EXPREF' 'EXPSPIN'
+    cp -r EXP00 EXPSPIN
     cd EXPSPIN
-    ln -s ../BLD/bin/nemo.exe nemo
+    ln -sf ../BLD/bin/nemo.exe nemo
     ``` 
 3. Now open the **namelist_cfg** file and edit the _&namrun_ section in order to have the following settings:
     ```vi
@@ -82,15 +84,15 @@ We are now going to create a new experiment to activate the GM parameterisation 
     This activates the default specification of the GM coefficient ($$\kappa_{gm}$$) which is constent all over the ocean domain with a value of $$2 000$$ $$m^2 s^{-1}$$.
 
 The spin-up is now configured. We have kept the default time-step value `rn_Dt = 14400.` in the namelist, wich corresponds to a 4 hours time-stepping between each iteration.
-The simulation will then last 10 years (this can be easily changed by setting the final iteration _ǹn_itend_ accordingly).
+The simulation will then last 10 years (this can be easily changed by setting the final iteration _nn_itend_ accordingly).
 
 Before running the model, we will add extra variables using XIOS.
 
-## Adding new variable to the output diagnostics using XIOS
+## Adding new variables to the output diagnostics using XIOS
 
 The NEMO strategy to manage input and output files is based on XIOS.
 The output files that will be saved during the simulation can be defined for each experiment in its top-level folder within the **file_def_nemo.xml** file.
-The _EXPREF_ folder already provides a default xml file that allows to store variables every 5 days as well as additional diagnostic limited to yearly frequency. 
+The _EXP00_ folder already provides a default xml file that allows one to store variables every 5 days as well as additional diagnostics limited to yearly frequency. 
 
 > **Note:** XIOS provides different methods to pre-process the data before storing. By default, variables are time-averaged to the period defined by the 'output_freq' attribute of a 'file_group' entry.
 
@@ -110,11 +112,25 @@ Add them in the U- and V-grid requested output files by modifying **file_def_nem
         </file>
 ```
 
-> **Note:** All requested variables has to be defined in **field_def_nemo-oce.xml** or **field_def_nemo-pisces.xml**. Check within these files first before adding a new request.
+> **Note:** All requested variables have to be defined in **field_def_nemo-oce.xml** or **field_def_nemo-pisces.xml**. Check within these files first before adding a new request.
 
 ## Restart new experiments from the spin-up (EXPCTRL, EXPEIV and EXPGEOM)
 
-At this step, your spin-up experiment is ready to be run. Use the commands `./nemo &` to do it. 
+At this step, your spin-up experiment is ready to be run. By default, if you run on, for example 4 cores, your output will be split in 4. This is cumbersome for plotting. You can use the REBUILD_NEMO tool, but we suggest below an easier option for a "light" configuration like we have here for GYRE.
+
+Open file_def_nemo.xml
+
+and change this line:
+```
+    <file_definition type="multiple_file" name="@expname@_@freq@_@startdate@_@enddate@" sync_freq="10d" min_digits="4">
+```
+to this: 
+```
+    <file_definition type="one_file" name="@expname@_@freq@_@startdate@_@enddate@" sync_freq="10d" min_digits="4">
+```
+
+To run your job, you can either use the command `./nemo &` to do it or you can submit a job for faster execution. 
+
 Once finished, use `ls` to list the resulting files. This should return four restart files:
 ```bash
     GYRE_00010800_restart.nc  GYRE_00010800_restart_trc.nc  GYRE_00021600_restart.nc  GYRE_00021600_restart_trc.nc
