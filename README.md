@@ -24,7 +24,7 @@ The circulation is forced by analytical profiles of wind and buoyancy fluxes. Th
 Even though this is a very simple example, it allows one to investigate the parameterised transports of mesoscale eddies on tracers and their contribution to the large scale circulation.
 In this tutorial, we will use a 1° horizontal resolution test case, which is cheap enough to be run on a personal computer and can be used as a demonstrator for comparing mesoscale parameterisations.
 
-Now that you know a bit more about the configuration you're going to use, it's time to start [the tutorial](docs/tutorial-1.md).
+Now that you know a bit more about the configuration you're going to use, it's time to start [tutorial 1](docs/tutorial-1.md).
 
 &nbsp;
 
