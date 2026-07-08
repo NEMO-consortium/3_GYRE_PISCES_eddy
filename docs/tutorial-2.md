@@ -131,7 +131,7 @@ to this:
 
 To run your job, you can either use the command `./nemo &` to do it or you can submit a job for faster execution. 
 
-Once finished, use `ls` to list the resulting files. This should return four restart files:
+Once finished, use `ls` to list the resulting files. If you ran on a single cores, you should have the restart files as shown below. Note, you have submit a job (to execute faster), you will have multiple restart files. This is not a problem but REMEMBER TO RUN ON THE SAME NUMBER OF CORES FOR THE NEXT TUTORIAL. 
 ```bash
     GYRE_00010800_restart.nc  GYRE_00010800_restart_trc.nc  GYRE_00021600_restart.nc  GYRE_00021600_restart_trc.nc
 ```
@@ -141,8 +141,8 @@ Now we will run three experiments to compare: EXPCTRL, EXPEIV and EXPGEOM.
 1. Create a new experiment:
     ```bash
     cd ..
-    cp -R EXPREF EXPCTRL & cd EXPCTRL
-    ln -s ../BLD/bin/nemo.exe nemo
+    cp -r EXP00 EXPCTRL & cd EXPCTRL
+    ln -sf ../BLD/bin/nemo.exe nemo
     rm file_def_nemo.xml
     ln -s ../EXPSPIN/file_def_nemo.xml
     ```
@@ -172,6 +172,8 @@ Now we will run three experiments to compare: EXPCTRL, EXPEIV and EXPGEOM.
        cn_trcrst_in  = "GYRE_00021600_restart_trc"   !  suffix of pass. sn_tracer restart name (input)
        cn_trcrst_indir = "../EXPSPIN"           !  directory from which to read input passive tracer restarts
     ```
+> NOTE: You need to follow the above steps for experiments EXPEIV and EXPGEOM
+
 4. In the **namelist_cfg** file, add the _&namtra_eiv_ section after the _&namtra_ldf_ one. The formulation is changed by setting the value of the 'nn_aei_ijk_t' parameter.
 Here we provide a guide to change it but you can find all the available values in the **namelist_cfg_ref** file. For each experiment, this section should look as follow:
     * EXPCTRL
