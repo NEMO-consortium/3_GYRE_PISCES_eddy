@@ -4,7 +4,7 @@ This page introduces the approach used in NEMO to parameterise the transport of 
 In particular, the tutorial focuses on the scheme of [Gent and McWilliams, 1990](https://doi.org/10.1175/1520-0485(1990)020%3C0150:IMIOCM%3E2.0.CO;2), hereafter GM, that represents the eddy buoyancy flux due to baroclinic instability processes.
 In this page, we recall the basic formulation of the GM parameterisation, its expected behaviour and the main options available in NEMO5 to constrain the parameterised eddy flux.
 
-> **NOTE:**  Users familiar with the Gent and McWilliams parameterisation and its implementation in NEMO5 can skip this theoretical section and can go to [the spin up set-up](spin_up.md) directly.
+> **NOTE:**  Users familiar with the Gent and McWilliams parameterisation and its implementation in NEMO5 can skip this theoretical section and can go to the spin up set-up in [tutotial 2](docs/tutorial-2.md) directly.
 
 ## The Gent and McWilliams (1990) parameterisation
 
