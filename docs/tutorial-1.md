@@ -2,7 +2,7 @@
 
 This page introduces the approach used in NEMO to parameterise the transport of tracers induced be unresolved mesoscale eddies in the ocean. 
 In particular, the tutorial focuses on the scheme of [Gent and McWilliams, 1990](https://doi.org/10.1175/1520-0485(1990)020%3C0150:IMIOCM%3E2.0.CO;2), hereafter GM, that represents the eddy buoyancy flux due to baroclinic instability processes.
-In this page, we recall the basic formulation of the GM parameterisation, its expected behaviour and the main options available in NEMO5 to constrain the parameterised eddy flux.
+In this tutorial, we recall the basic formulation of the GM parameterisation, its expected behaviour and the main options available in NEMO5 to constrain the parameterised eddy flux.
 
 > **NOTE:**  Users familiar with the Gent and McWilliams parameterisation and its implementation in NEMO5 can skip this theoretical section and can go to the spin up set-up in [tutorial 2](tutorial-2.md) directly.
 
@@ -69,6 +69,6 @@ By construction, it is bounded by unity.
 An important aspect of the GEOMETRIC parameterisation is that the GM coefficient is proportional to an eddy energy field which is computed over the simulation by solving a prognostic eddy energy budget.
 
 ## Summary
-In this page, we have reviewed the so-called GM parameterisation, one of the most common scheme to represent unresolved mesoscale transport of tracers in low-resolution ocean models. 
-In the following, you will set-up a simple experiment to benchmark different options under a simple gyre configuration case.
-We will start by [set-up and run a first experiment](setup.md) to spin-up the model for 10 years.
+In this page, we have reviewed the so-called GM parameterisation, one of the most common schemes to represent unresolved mesoscale transport of tracers in low-resolution ocean models. 
+In the following tutorial, you will set-up a simple experiment to benchmark different options under a simple gyre configuration case.
+We will start by seting-up and running a first experiment to spin-up the model for 10 years in [tutorial 2](tutorial-2.md).
