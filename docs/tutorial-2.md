@@ -212,4 +212,4 @@ Now your experiments are done !
 
 In this page we have shown how to set-up an idealised gyre domain and run it over several years. 
 The same configuration is then used to run three experiments that employs different approaches to constrain the GM coefficient.
-We can now analyse and [compare our simulation results](results.md).
+We can now analyse and compare our simulation results in [tutorial 3](tutorial-3.md).
