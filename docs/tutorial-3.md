@@ -17,7 +17,14 @@ Then load it:
 conda activate GYRE_PISCES_eddy_demo
 ```
 
-Now to run the python script:
+Before you run the python script, edit the path to point to your demo configuration directory:
+```
+# Absolute paths to the configuration
+nemo_path = '/home/YOUR_PATH/nemo_5.0.2/'
+config    = 'GYRE_DEMO'
+```
+
+Now run:
 ```
 jupyter notebook GYRE_PISCES-eddy-postprocessing.ipynb
 ```
