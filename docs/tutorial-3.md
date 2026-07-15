@@ -2,8 +2,20 @@
 
 In this page, we show some results to compare how the eddy parameterisations can alter the gyre simulations. 
 All the plots shown on this page have been generated using a python jupyter notebook (available in the _scripts_ folder of this repository).
+
+
+## Setting Python environment
 To run it without trouble, you will probably need to install a suite of python libraries. 
-We thus provide a **requirements.txt** file in the _scripts_ folder.
+We thus provide a **GYRE_PISCES_eddy.yml** file in the _scripts_ folder. Make sure that you have cloned this demonstrator to your local machine to access this file and the python run script.
+
+To create your environment, use conda (it can take some time):
+```
+conda env create --file GYRE_PISCES_eddy_demo.yml
+```
+Then load it:
+```
+conda activate GYRE_PISCES_eddy_demo
+```
 
 ## Results overview
 
