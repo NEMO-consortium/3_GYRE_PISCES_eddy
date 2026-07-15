@@ -172,8 +172,14 @@ Now we will run three experiments to compare: EXPCTRL, EXPEIV and EXPGEOM.
        cn_trcrst_in  = "GYRE_00021600_restart_trc"   !  suffix of pass. sn_tracer restart name (input)
        cn_trcrst_indir = "../EXPSPIN"           !  directory from which to read input passive tracer restarts
     ```
->Kat and Pierre stop here. Need to repeat steps for other experiments. 
-> NOTE: You need to follow the above steps for experiments EXPEIV and EXPGEOM
+    
+These steps are common to EXPEIV and EXPGEOM. You can copy EXPCTRL to EXPEIV and EXPGEOM by doing so:
+
+```
+cd ..
+cp -r EXPCTRL EXPEIV
+cp -r EXPCTRL EXPGEOM
+```
 
 4. In the **namelist_cfg** file, add the _&namtra_eiv_ section after the _&namtra_ldf_ one. The formulation is changed by setting the value of the 'nn_aei_ijk_t' parameter.
 Here we provide a guide to change it but you can find all the available values in the **namelist_cfg_ref** file. For each experiment, this section should look as follow:
