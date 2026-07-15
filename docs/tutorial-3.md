@@ -4,7 +4,7 @@ In this page, we show some results to compare how the eddy parameterisations can
 All the plots shown on this page have been generated using a python jupyter notebook (available in the _scripts_ folder of this repository).
 
 
-## Setting Python environment
+## Setting up the Python environment
 To run it without trouble, you will probably need to install a suite of python libraries. 
 We thus provide a **GYRE_PISCES_eddy.yml** file in the _scripts_ folder. Make sure that you have cloned this demonstrator to your local machine to access this file and the python run script.
 
