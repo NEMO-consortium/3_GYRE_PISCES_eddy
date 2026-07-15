@@ -1,0 +1,21 @@
+name: GYRE_PISCES_eddy_demo                                                                                     
+channels:                                                                                           
+  - conda-forge                                                                                     
+dependencies:                                                                                       
+  - python=3.13                                                                                     
+  - Cartopy                                                                                         
+  - cmocean                                                                                         
+  - geos                                                                                            
+  - gsw                                                                                             
+  - h5py                                                                                            
+  - jupyterlab                                                                                      
+  - matplotlib                                                                                      
+  - matplotlib-inline                                                                               
+  - netCDF4                                                                                         
+  - numpy                                                                                           
+  - pandas                                                                                          
+  - proj                                                                                            
+  - pyproj                                                                                          
+  - shapely                                                                                         
+  - six                                                                                             
+  - xarray 
