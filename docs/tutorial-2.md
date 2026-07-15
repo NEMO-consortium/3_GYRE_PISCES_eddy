@@ -144,7 +144,7 @@ Now we will run three experiments to compare: EXPCTRL, EXPEIV and EXPGEOM.
     cp -r EXP00 EXPCTRL & cd EXPCTRL
     ln -sf ../BLD/bin/nemo.exe nemo
     rm file_def_nemo.xml
-    ln -s ../EXPSPIN/file_def_nemo.xml
+    cp ../EXPSPIN/file_def_nemo.xml
     ```
 2. Open the **namelist_cfg** file and edit the _&namrun_ section to restart from the last EXPSPIN state:
     ```vi
