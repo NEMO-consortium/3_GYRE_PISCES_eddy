@@ -233,7 +233,7 @@ Here we provide a guide to change it but you can find all the available values i
     
 Now your experiments are done ! 
 
-7. If you ran on multiple cores, then you will have x times mesh_mask.nc files. This makes plotting (in the next tutorial) complicated. An easy work around is to do a quick simulation of just 1 timestep on 1 core. To do this in namelist_cfg change `nn_itend` to `1' and re-run ` ./nemo &`
+7. If you ran on multiple cores, then you will have x times mesh_mask.nc files. This makes plotting (in the next tutorial) complicated. An easy work around is to do a quick simulation of just 1 timestep on 1 core. To do this in namelist_cfg change `nn_itend` to 1 and re-run ` ./nemo &`
 
 As a sanity check, below is an ncview print screen of `eke` at the last timestep of the file GYRE_5d_00110101_00151230_grid_T.nc in the experiment EXPGEOM
 
