@@ -1,7 +1,7 @@
 # Analysing results from your gyre experiments
 
-In this page, we show some results to compare our the eddy parameterisations can alter the gyre simulations. 
-All the plots showed in this page have been generated using a python jupyter notebook (available in the _scripts_ folder of this repository).
+In this page, we show some results to compare how the eddy parameterisations can alter the gyre simulations. 
+All the plots shown on this page have been generated using a python jupyter notebook (available in the _scripts_ folder of this repository).
 To run it without trouble, you will probably need to install a suite of python libraries. 
 We thus provide a **requirements.txt** file in the _scripts_ folder.
 
