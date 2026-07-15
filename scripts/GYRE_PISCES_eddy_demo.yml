@@ -8,6 +8,7 @@ dependencies:
   - geos                                                                                            
   - gsw                                                                                             
   - h5py                                                                                            
+  - jupyter
   - jupyterlab                                                                                      
   - matplotlib                                                                                      
   - matplotlib-inline                                                                               
