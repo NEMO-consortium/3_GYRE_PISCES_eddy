@@ -17,6 +17,11 @@ Then load it:
 conda activate GYRE_PISCES_eddy_demo
 ```
 
+Now to run the python script
+```
+jupyter notebook GYRE_PISCES-eddy-postprocessing.ipynb
+```
+
 ## Results overview
 
 ![alt_text](./imgs/temperature_ts.png)
