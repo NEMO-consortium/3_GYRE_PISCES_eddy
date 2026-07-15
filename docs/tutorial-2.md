@@ -55,7 +55,7 @@ When the iteration reaches _4320_, the simulation is finished.
 Results are stored in _GYRE\_\*\_grid\_\*.nc_ files.
 
 We are now going to create a new experiment to activate the GM parameterisation and spin-up the model for 10 years:
-1. Navigate and return to the configuration top-level folder: `cd .. & ls`. At this point, the folder structure should be as follow:
+1. Navigate and return to the configuration top-level folder: `cd .. & ls`. At this point, the folder structure should be as follows:
     ```bash
     BLD cpp_GYRE_DEMO.fcm  EXP00 EXP01  MY_SRC  WORK
     ```
@@ -213,7 +213,7 @@ Here we provide a guide to change it but you can find all the available values i
               nn_aei_ijk_t    = 32          !  space/time variation of eddy coefficient:
         /
         ```
-    > **Note:** In EXPGEOM, we used the default settings for the GEOMETRIC parameterisation. However, NEMO5 provides a number of parameters that can be use to custom the eddy energy budget. This can be done by copying the _&namldf_eke_ section of **namelist_ref** in your **namelist_cfg** file and modifying the default values.
+    > **Note:** In EXPGEOM, we used the default settings for the GEOMETRIC parameterisation. However, NEMO5 provides a number of parameters that can be use to customize the eddy energy budget. This can be done by copying the _&namldf_eke_ section of **namelist_ref** in your **namelist_cfg** file and modifying the default values.
     
 5. For EXPGEOM only, add eddy energy variables in **file_def_nemo.xml**. Add the following entry in the 'file1' field:
     ```xml
