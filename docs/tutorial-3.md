@@ -19,7 +19,7 @@ conda activate GYRE_PISCES_eddy_demo
 
 Before you run the python script, edit the path to point to your demo configuration directory:
 ```
-# Absolute paths to the configuration
+# Paths to the configuration
 nemo_path = '/home/YOUR_PATH/nemo_5.0.2/'
 config    = 'GYRE_DEMO'
 ```
