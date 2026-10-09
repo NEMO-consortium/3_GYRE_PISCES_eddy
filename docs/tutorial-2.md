@@ -42,7 +42,7 @@ In particular, it creates an executable **cfgs/GYRE_DEMO/BLD/bin/nemo.exe** that
 
 If you have not done so already, copy EXP00 to create EXP01
 ```
-cp cfgs/GYRE_DEMO/EXP00 cfgs/GYRE_DEMO/EXP01
+cp -r cfgs/GYRE_DEMO/EXP00 cfgs/GYRE_DEMO/EXP01
 ```
 
 Test your installation by running the model (or by submitting a job as is suggested in the [NEMO Basics](https://github.com/NEMO-consortium/0_NEMO_basics) tutorial):
